@@ -26,11 +26,13 @@ class Game():
   def createMil(self, mil: List[Tuple[int, int]], toRemove: Tuple[int, int]) -> bool:
     pass
 
-  def isWithinBoard(coord: Tuple[int, int]) -> bool:
-    pass
+  def isWithinBoard(self, coord: Tuple[int, int]) -> bool:
+    x, y = coord
+    return x >= 0 and x < self.size and y >= 0 and y < self.size
 
-  def isEmptySquare(coord: Tuple[int, int]) -> bool:
-    pass
+  def isEmptySquare(self, coord: Tuple[int, int]) -> bool:
+    x, y = coord
+    return self.board[x][y] == EMPTY
 
   def isAdjacentSquare(coord1: Tuple[int, int], coord2: Tuple[int, int]) -> bool:
     pass
