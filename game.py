@@ -34,25 +34,25 @@ class Game():
     x, y = coord
     return self.board[x][y] == EMPTY
 
-  def isAdjacentSquare(coord1: Tuple[int, int], coord2: Tuple[int, int]) -> bool:
+  def isAdjacentSquare(self, coord1: Tuple[int, int], coord2: Tuple[int, int]) -> bool:
     pass
 
-  def isMoveBreakingMil(coord1: Tuple[int, int], coord2: Tuple[int, int]) -> bool:
+  def isMoveBreakingMil(self, coord1: Tuple[int, int], coord2: Tuple[int, int]) -> bool:
     pass
 
-  def isPieceInMil(coord: Tuple[int, int]) -> bool:
+  def isPieceInMil(self, coord: Tuple[int, int]) -> bool:
     pass
 
-  def placeMil(milStart: Tuple[int, int], milEnd: Tuple[int, int]) -> None:
+  def placeMil(self, milStart: Tuple[int, int], milEnd: Tuple[int, int]) -> None:
     pass
 
-  def removeMil(milStart: Tuple[int, int], milEnd: Tuple[int, int]) -> None:
+  def removeMil(self, milStart: Tuple[int, int], milEnd: Tuple[int, int]) -> None:
     pass
 
-  def placePiece(coord: Tuple[int, int]) -> None:
+  def placePiece(self, coord: Tuple[int, int]) -> None:
     pass
 
-  def removePiece(coord: Tuple[int, int]) -> None:
+  def removePiece(self, coord: Tuple[int, int]) -> None:
     pass
 
   
