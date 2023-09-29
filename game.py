@@ -136,9 +136,9 @@ class Game():
     return mils if len(mils) > 0 else None
   
   def printBoard(self) -> None:
-    print("  0 1 2 3 4 5 6 7")
+    print(f"  {' '.join([str(i+1) for i in range(self.size)])}")
     for i, row in enumerate(self.board):
-      print(f"{i} {' '.join(row)}")
+      print(f"{chr(i + ord('a'))} {' '.join(row)}")
 
 class GameLoop:
     def __init__(self):
@@ -150,8 +150,8 @@ class GameLoop:
             print(f"It's {self.game.turn}'s turn!")
             
             if True:  # Assuming the player is WHITE
-                coord1 = self.get_coordinate("Enter the starting coordinate (x,y): ") if self.game.phase[self.game.turn] != PLACING else (0,0)
-                coord2 = self.get_coordinate("Enter the destination coordinate (x,y): ")
+                coord1 = self.get_coordinate("Enter the starting coordinate: ") if self.game.phase[self.game.turn] != PLACING else (0,0)
+                coord2 = self.get_coordinate("Enter the destination coordinate: ")
                 result = self.game.makeMove(coord1, coord2)
                 
                 if result == False:
@@ -163,9 +163,9 @@ class GameLoop:
                     self.print_mils(result)
                     mil = input(f"Select mil 0-{len(result)-1}")
                     while not mil.isdigit() or int(mil) < 0 or int(mil) >= len(result):
-                        mil = input(f"Select mil 0-{len(result)-1}")
-                    mil = int(mil)
-                    to_remove = self.get_coordinate("Enter the opponent piece to remove (x,y): ")
+                        mil = input(f"Select mil 1-{len(result)}: ")
+                    mil = int(mil) -1
+                    to_remove = self.get_coordinate("Enter the opponent piece to remove: ")
                     self.game.createMil(result[mil], to_remove)
 
             else:  # AI's turn
@@ -178,10 +178,11 @@ class GameLoop:
     def get_coordinate(self, prompt: str) -> Tuple[int, int]:
         while True:
             try:
-                x, y = map(int, input(prompt).split(','))
+                res = input(prompt)
+                x, y = ord(res[0]) - ord('a'), int(res[1]) - 1
                 return (x, y)
             except ValueError:
-                print("Invalid input. Please enter coordinates in the format x,y.")
+                print("Invalid input. Please enter coordinates in the format a1.")
 
     def print_mils(self, mils: List[List[Tuple[int, int]]]):
         print("Mils created:")
