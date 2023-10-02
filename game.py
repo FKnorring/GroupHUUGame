@@ -267,6 +267,44 @@ class GameLoop:
         for i, mil in enumerate(mils):
             print(f"{i + 1}: {mil}")
 
+    def get_rules(self) -> str:
+        return '''
+            GAME RULES
+            
+            The goal of the game is to reduce the opponents number of pieces to two. Pieces 
+            are placed on a grid board and once a player only have two pieces left, the game 
+            is over and the player with more pieces wins. The game is drawn after 300 turns.
+            
+            Capture: 
+                - A capture is the action of removing a piece from the opponent. 
+                  The piece cannot be a part of a mil.
+                - Captures can occur during any phase of the game
+                
+            Mil: 
+                - A mil is a formation consisting of three pieces from the 
+                  same player ordered in a row or column on the board
+                - A piece cannot be part of more than one mil at a time, even 
+                  though it might be part of a row and a column for instance
+                - Mils can be formed during any phase of the game
+                - After creating a mil, the player may perform a capture.
+            
+            Phase 1 (Placing phase):
+                - The players each take a turn to put a piece on any vacant spot on the board
+                - The phase ends when all of the players pieces are placed on the board
+                
+            Phase 2 (Moving phase):
+                - During this phase, the players take turn in moving their pieces to adjacent 
+                  vacant spots on the board
+                - Pieces may not be moved diagonally, only horizontal and vertical moves 
+                  are allowed
+                - The phase ends when a player only have three pieces left
+                
+            Pahse 3 (Flying phase):
+                - In the end phase of the game, players may move pieces to any vacant spot 
+                  on the board during their turn (called 'flying')
+                - The game is over when a player is reduced to only two pieces.
+        '''
+
     def check_game_over(self):
         # Placeholder for game over checking logic
         pass
